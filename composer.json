@@ -1,0 +1,32 @@
+{
+    "name": "skater4/laravel-sentry-notifications",
+    "description": "Sends laravel sentry exceptions to messengers",
+    "license": "MIT",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=7.3",
+        "laravel-notification-channels/telegram": "*",
+        "sentry/sentry-laravel": "*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Skater4\\LaravelSentryNotifications\\": "src/"
+        }
+    },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Skater4\\LaravelSentryNotifications\\Providers\\NotifierServiceProvider",
+                "Skater4\\LaravelSentryNotifications\\Providers\\SentryServiceProvider",
+                "Skater4\\LaravelSentryNotifications\\Providers\\TelegramServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Stan Man",
+            "email": "skater4@yandex.ru"
+        }
+    ]
+}
