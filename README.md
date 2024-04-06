@@ -13,10 +13,6 @@ This package makes it easy to send Telegram notification using [Telegram Bot API
 - [Installation](#installation)
   - [Sentry](#setting-up-sentry)
   - [Telegram](#setting-up-telegram)
-  - [Setting up your Telegram Bot](#setting-up-your-telegram-bot)
-  - [Retrieving Chat ID](#retrieving-chat-id)
-  - [Using in Lumen](#using-in-lumen)
-  - [Proxy or Bridge Support](#proxy-or-bridge-support)
 - [Usage](#usage)
 - [Alternatives](#alternatives)
 - [Changelog](#changelog)
@@ -52,6 +48,27 @@ Then add following settings to .env
 SENTRY_TELEGRAM_BOT_TOKEN=<your:bot-token>
 SENTRY_TELEGRAM_CHAT_ID=<your_chat_id>
 SENTRY_NOTIFICATION_SERVICE=telegram
+```
+
+## Usage
+
+Just add following code where exception is handled to be reported
+
+```php
+resolve(SentryNotifier::class)->reportSentryNotification($exception);
+```
+
+For example report method in default exception handler
+
+```php
+public function report(Throwable $exception)
+{
+    if (app()->bound('sentry') && $this->shouldReport($exception)) {
+        resolve(SentryNotifier::class)->reportSentryNotification($exception);
+    }
+
+    parent::report($exception);
+}
 ```
 
 ## Alternatives
