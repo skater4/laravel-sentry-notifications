@@ -25,4 +25,9 @@ interface NotifableEntityInterface
      * @return string
      */
     public function getMessage(): string;
+
+    /**
+     * @return string
+     */
+    public function getKey(): string;
 }

@@ -6,8 +6,7 @@
     "require": {
         "php": ">=7.3",
         "laravel-notification-channels/telegram": "*",
-        "sentry/sentry-laravel": "*",
-        "ext-mbstring": "*"
+        "sentry/sentry-laravel": "*"
     },
     "require-dev": {
         "mockery/mockery": "^1.4",

@@ -6,10 +6,10 @@
 >
     <testsuites>
         <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+            <directory>./tests/Unit</directory>
         </testsuite>
         <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+            <directory>./tests/Feature</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
@@ -25,5 +25,10 @@
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
         <server name="TELESCOPE_ENABLED" value="false"/>
+
+        <server name="SENTRY_ISSUES_URL" value="https://sentry.io/organizations/sentry/issues"/>
+        <server name="SENTRY_TELEGRAM_BOT_TOKEN" value="bottoken"/>
+        <server name="SENTRY_TELEGRAM_CHAT_ID" value="123"/>
+        <server name="SENTRY_NOTIFICATION_SERVICE" value="telegram"/>
     </php>
 </phpunit>

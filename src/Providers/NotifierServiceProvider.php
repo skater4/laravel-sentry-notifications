@@ -15,14 +15,6 @@ class NotifierServiceProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function boot()
-    {
-        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'sentry-notifier');
-    }
-
-    /**
-     * @return void
-     */
     public function register(): void
     {
         $this->mergeConfigFrom(

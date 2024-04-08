@@ -5,7 +5,6 @@ namespace Skater4\LaravelSentryNotifications\Providers;
 use Illuminate\Foundation\Application;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\ServiceProvider;
-use Skater4\LaravelSentryNotifications\Notifications\Interfaces\NotifableEntityInterface;
 use Skater4\LaravelSentryNotifications\Notifications\Services\Telegram\Entities\NotifableTelegramChannel;
 use Skater4\LaravelSentryNotifications\Notifications\Services\Telegram\TelegramSentryNotification;
 use Skater4\LaravelSentryNotifications\Services\Messengers\Clients\Telegram\TelegramClient;

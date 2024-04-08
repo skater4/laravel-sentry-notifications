@@ -69,4 +69,12 @@ class NotifableTelegramChannel implements NotifableEntityInterface
     {
         return $this->message;
     }
+
+    /**
+     * @return string
+     */
+    public function getKey(): string
+    {
+        return $this->chatId;
+    }
 }

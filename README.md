@@ -17,7 +17,6 @@ This package makes it easy to send Telegram notification using [Telegram Bot API
 - [Alternatives](#alternatives)
 - [Changelog](#changelog)
 - [Testing](#testing)
-- [Security](#security)
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
@@ -84,10 +83,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 ```bash
 $ composer test
 ```
-
-## Security
-
-If you discover any security related issues, please email skater4@yandex.ru instead of using the issue tracker.
 
 ## Contributing
 

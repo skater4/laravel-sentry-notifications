@@ -46,14 +46,13 @@ class SentryNotifier
             $eventId = $this->sentryService->captureException($e);
 
             if (empty($eventId)) {
-                throw new SentryNotifierException(trans('sentry-notifier::translations.empty_event_response'));
+                throw new SentryNotifierException('Empty Event ID response');
             }
 
             $issueUrl = $this->sentryService->getIssueUrl($eventId);
             $this->messengerClient->sendMessage($e, $issueUrl);
         } catch (Exception $e) {
-            throw new SentryNotifierException(trans(
-                    'sentry-notifier::translations.sentry_notifier_error') . ': ' . $e->getMessage()
+            throw new SentryNotifierException('Sentry Notifier error: ' . $e->getMessage()
             );
         }
     }

@@ -28,6 +28,6 @@ class TelegramSentryNotification extends Notification
         return TelegramMessage::create()
             ->to($notifiable->getChatId())
             ->content($notifiable->getMessage())
-            ->button(trans('sentry-notifier::translations.sentry_event_url'), $notifiable->getEventUrl());
+            ->button('Sentry event URL', $notifiable->getEventUrl());
     }
 }
