@@ -1,4 +1,4 @@
-# Telegram Sentry Notifications for Laravel
+# Sentry Notifications Channels for Laravel
 
 [![Chat on Telegram][ico-telegram]][link-telegram]
 [![Latest Version on Packagist][ico-version]][link-packagist]
@@ -6,7 +6,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-packagist]
 
-This package makes it easy to send Telegram notification using [Telegram Bot API](https://core.telegram.org/bots) with Laravel.
+This package makes it easy to send Sentry notification to different channels in Laravel.
 
 ## Contents
 
