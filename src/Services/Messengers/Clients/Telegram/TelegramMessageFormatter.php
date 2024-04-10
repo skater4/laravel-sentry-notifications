@@ -16,11 +16,13 @@ class TelegramMessageFormatter implements MessageFormatterInterface
         $text = '';
 
         if (!empty(config('app.name'))) {
-            $text .= 'Project: ' . config('app.name') . PHP_EOL;
+            $text .= 'Project URL: ' . '[' . url('/') . '](' . url('/') . ')' . PHP_EOL;
         }
 
         $text .= 'Env: ' . config('app.env') . PHP_EOL;
+        $text .= 'Exception: ' . get_class($e) . PHP_EOL;
         $text .= '```Error: ' . $e->getMessage() . '```' . PHP_EOL;
+        $text .= '```Trace: ' . $e->getTraceAsString() . '```' . PHP_EOL;
 
         return $text;
     }
