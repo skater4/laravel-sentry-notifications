@@ -53,7 +53,7 @@ class SentryNotifier
             $issueUrl = $this->sentryService->getIssueUrl($eventId);
             $this->messengerClient->sendMessage($e, $issueUrl);
         } catch (Exception $e) {
-            Log::error('Sentry Notifier error: ' . $e->getMessage());
+            Log::error(get_class($e) . 'Exception: ' . $e->getMessage() . PHP_EOL . $e->getTraceAsString());
             throw new SentryNotifierException('Sentry Notifier error: ' . $e->getMessage()
             );
         }
