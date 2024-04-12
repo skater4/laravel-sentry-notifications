@@ -7,6 +7,8 @@ use Throwable;
 
 class TelegramMessageFormatter implements MessageFormatterInterface
 {
+    const MESSAGE_LENGTH = 1000;
+
     /**
      * @param Throwable $e
      * @return string
@@ -23,6 +25,11 @@ class TelegramMessageFormatter implements MessageFormatterInterface
         $text .= 'Exception: ' . get_class($e) . PHP_EOL;
         $text .= '```Error: ' . $e->getMessage() . '```' . PHP_EOL;
         $text .= '```Trace: ' . $e->getTraceAsString() . '```' . PHP_EOL;
+
+        if (mb_strlen($text) > self::MESSAGE_LENGTH) {
+            $text = mb_substr($text, 0, self::MESSAGE_LENGTH);
+            $text = rtrim($text) . '...```';
+        }
 
         return $text;
     }
