@@ -3,6 +3,7 @@
 namespace Skater4\LaravelSentryNotifications\Services;
 
 use Exception;
+use Log;
 use Skater4\LaravelSentryNotifications\Services\Messengers\Interfaces\MessengerClientInterface;
 use Skater4\LaravelSentryNotifications\Exceptions\SentryNotifierException;
 use Skater4\LaravelSentryNotifications\Exceptions\UnknownServiceException;
@@ -52,7 +53,7 @@ class SentryNotifier
             $issueUrl = $this->sentryService->getIssueUrl($eventId);
             $this->messengerClient->sendMessage($e, $issueUrl);
         } catch (Exception $e) {
-            report($e);
+            Log::error('Sentry Notifier error: ' . $e->getMessage());
             throw new SentryNotifierException('Sentry Notifier error: ' . $e->getMessage()
             );
         }
