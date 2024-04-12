@@ -52,6 +52,7 @@ class SentryNotifier
             $issueUrl = $this->sentryService->getIssueUrl($eventId);
             $this->messengerClient->sendMessage($e, $issueUrl);
         } catch (Exception $e) {
+            report($e);
             throw new SentryNotifierException('Sentry Notifier error: ' . $e->getMessage()
             );
         }
