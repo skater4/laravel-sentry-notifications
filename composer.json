@@ -2,7 +2,7 @@
     "name": "skater4/laravel-sentry-notifications",
     "description": "Sends laravel sentry exceptions to messengers",
     "license": "MIT",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "require": {
         "php": ">=7.3",
         "laravel-notification-channels/telegram": "*",
