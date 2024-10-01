@@ -59,7 +59,7 @@ class TelegramClientTest extends TestCase
      */
     public function testSendMessage()
     {
-        $client = resolve(TelegramClient::class);
+        $client = app(TelegramClient::class);
 
         Notification::fake();
         Notification::assertNothingSent();

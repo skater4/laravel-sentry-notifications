@@ -20,7 +20,7 @@ class MessageFormatterFactory
     {
         switch ($this->service) {
             case Services::SERVICE_TELEGRAM:
-                return resolve(TelegramMessageFormatter::class);
+                return app(TelegramMessageFormatter::class);
             default:
                 throw new UnknownServiceException('Unknown service ' . $this->service);
         }

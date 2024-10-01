@@ -20,7 +20,7 @@ class NotificationFactory
     {
         switch ($this->service) {
             case Services::SERVICE_TELEGRAM:
-                return resolve(TelegramSentryNotification::class);
+                return app(TelegramSentryNotification::class);
             default:
                 throw new UnknownServiceException('Unknown service ' . $this->service);
         }

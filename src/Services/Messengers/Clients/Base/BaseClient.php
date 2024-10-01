@@ -28,7 +28,7 @@ abstract class BaseClient
     protected function getNotifableEntity(): NotifableEntityInterface
     {
         if (!$this->notifableEntity) {
-            $this->notifableEntity = resolve(NotificationEntityFactory::class)->create();
+            $this->notifableEntity = app(NotificationEntityFactory::class)->create();
         }
 
         return $this->notifableEntity;
@@ -37,7 +37,7 @@ abstract class BaseClient
     protected function getNotificationClass(): Notification
     {
         if (!$this->notificationClass) {
-            $this->notificationClass = resolve(NotificationFactory::class)->create();
+            $this->notificationClass = app(NotificationFactory::class)->create();
         }
 
         return $this->notificationClass;
