@@ -8,8 +8,10 @@ return [
     //
 
     'laravel-sentry-notifications' => [
-        'service'       => env('SENTRY_NOTIFICATION_SERVICE', 'telegram'),
+        'service'       => env('SENTRY_NOTIFICATION_SERVICE'),
         'issues_url'    => env('SENTRY_ISSUES_URL', 'https://sentry.io/organizations/sentry/issues'),
-        'chat_id'       => env('SENTRY_TELEGRAM_CHAT_ID')
+        'telegram'      => [
+            'chat_id'       => env('SENTRY_TELEGRAM_CHAT_ID')
+        ],
     ]
 ];

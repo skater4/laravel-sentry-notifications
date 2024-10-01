@@ -8,9 +8,6 @@ use Skater4\LaravelSentryNotifications\Services\Sentry\SentryService;
 
 class SentryServiceProvider extends ServiceProvider
 {
-    /**
-     * @return void
-     */
     public function register(): void
     {
         $this->app->singleton(SentryServiceInterface::class, function ($app) {

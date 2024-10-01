@@ -9,20 +9,11 @@ use Skater4\LaravelSentryNotifications\Notifications\Services\Telegram\Entities\
 
 class TelegramSentryNotification extends Notification
 {
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @return array
-     */
     public function via(): array
     {
         return [TelegramChannel::class];
     }
 
-    /**
-     * @param NotifableTelegramChannel $notifiable
-     * @return TelegramMessage
-     */
     public function toTelegram(NotifableTelegramChannel $notifiable): TelegramMessage
     {
         return TelegramMessage::create()

@@ -12,9 +12,6 @@ use Skater4\LaravelSentryNotifications\Services\SentryNotifier;
 
 class NotifierServiceProvider extends ServiceProvider
 {
-    /**
-     * @return void
-     */
     public function register(): void
     {
         $this->mergeConfigFrom(

@@ -11,18 +11,11 @@ class MessageFormatterFactory
 {
     private $service;
 
-    /**
-     * @param string $service
-     */
     public function __construct(string $service)
     {
         $this->service = $service;
     }
 
-    /**
-     * @return MessageFormatterInterface
-     * @throws UnknownServiceException
-     */
     public function create(): MessageFormatterInterface
     {
         switch ($this->service) {

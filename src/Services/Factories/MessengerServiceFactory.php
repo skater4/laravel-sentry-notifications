@@ -9,18 +9,13 @@ use Skater4\LaravelSentryNotifications\Services\Messengers\Clients\Telegram\Tele
 
 class MessengerServiceFactory
 {
-    /**
-     * @param string $service
-     * @return MessengerClientInterface
-     * @throws UnknownServiceException
-     */
     public static function create(string $service): MessengerClientInterface
     {
         switch ($service) {
             case Services::SERVICE_TELEGRAM:
                 return resolve(TelegramClient::class);
             default:
-                throw new UnknownServiceException('Unknown service ' . $service);
+                throw new UnknownServiceException('Unknown sentry notification service ' . $service);
         }
     }
 }

@@ -11,28 +11,16 @@ class SentryService implements SentryServiceInterface
     private $sentry;
     private $issuesUrl;
 
-    /**
-     * @param Hub $sentry
-     * @param string $issuesUrl
-     */
     public function __construct(Hub $sentry, string $issuesUrl)
     {
         $this->sentry = $sentry;
         $this->issuesUrl = rtrim($issuesUrl, '/') . '/';
     }
 
-    /**
-     * @param Throwable $e
-     * @return string|null
-     */
     public function captureException(Throwable $e): ?string {
         return $this->sentry->captureException($e);
     }
 
-    /**
-     * @param string $eventId
-     * @return string
-     */
     public function getIssueUrl(string $eventId): string {
         $data = [
             'query' => 'id:' . $eventId

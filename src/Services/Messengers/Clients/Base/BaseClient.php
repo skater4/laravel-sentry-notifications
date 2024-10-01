@@ -17,10 +17,6 @@ abstract class BaseClient
     protected $notifableEntity;
     protected $notificationClass;
 
-    /**
-     * @return MessageFormatterInterface
-     * @throws UnknownServiceException
-     */
     protected function getMessageFormatter(): MessageFormatterInterface
     {
         if (!$this->messageFormatter) {
@@ -30,10 +26,6 @@ abstract class BaseClient
         return $this->messageFormatter;
     }
 
-    /**
-     * @return NotifableEntityInterface
-     * @throws UnknownServiceException
-     */
     protected function getNotifableEntity(): NotifableEntityInterface
     {
         if (!$this->notifableEntity) {
@@ -43,10 +35,6 @@ abstract class BaseClient
         return $this->notifableEntity;
     }
 
-    /**
-     * @return Notification
-     * @throws UnknownServiceException
-     */
     protected function getNotificationClass(): Notification
     {
         if (!$this->notificationClass) {
