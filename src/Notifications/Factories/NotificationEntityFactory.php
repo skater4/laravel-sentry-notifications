@@ -16,15 +16,11 @@ class NotificationEntityFactory
         $this->service = $service;
     }
 
-    /**
-     * @return NotifableEntityInterface
-     * @throws UnknownServiceException
-     */
     public function create(): NotifableEntityInterface
     {
         switch ($this->service) {
             case Services::SERVICE_TELEGRAM:
-                return resolve(NotifableTelegramChannel::class);
+                return app(NotifableTelegramChannel::class);
             default:
                 throw new UnknownServiceException('Unknown service ' . $this->service);
         }

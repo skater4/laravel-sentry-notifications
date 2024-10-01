@@ -2,7 +2,6 @@
 
 namespace Skater4\LaravelSentryNotifications\Services;
 
-use Exception;
 use Log;
 use Skater4\LaravelSentryNotifications\Services\Messengers\Interfaces\MessengerClientInterface;
 use Skater4\LaravelSentryNotifications\Exceptions\SentryNotifierException;
@@ -19,10 +18,6 @@ class SentryNotifier
         UnknownServiceException::class
     ];
 
-    /**
-     * @param MessengerClientInterface $messengerClient
-     * @param SentryServiceInterface $sentryService
-     */
     public function __construct(
         MessengerClientInterface $messengerClient,
         SentryServiceInterface   $sentryService
@@ -32,11 +27,6 @@ class SentryNotifier
         $this->sentryService    = $sentryService;
     }
 
-    /**
-     * @param Throwable $e
-     * @return void
-     * @throws SentryNotifierException
-     */
     public function reportSentryNotification(Throwable $e): void
     {
         if (!$this->canReportSentry($e)) {
@@ -52,19 +42,13 @@ class SentryNotifier
 
             $issueUrl = $this->sentryService->getIssueUrl($eventId);
             $this->messengerClient->sendMessage($e, $issueUrl);
-        } catch (Exception $_e) {
+        } catch (Throwable $_e) {
             Log::error(get_class($e) . 'Exception: ' . $e->getMessage() . PHP_EOL . $e->getTraceAsString());
             throw new SentryNotifierException('Sentry Notifier error: ' . $_e->getMessage()
             );
         }
     }
 
-    /**
-     * Check if exception should be report to Sentry
-     *
-     * @param Throwable $e
-     * @return bool
-     */
     private function canReportSentry(Throwable $e): bool
     {
         return !in_array(get_class($e), $this->dontReport);

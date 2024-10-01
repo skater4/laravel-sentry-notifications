@@ -13,12 +13,6 @@ class TelegramClient extends BaseClient implements MessengerClientInterface
 {
     protected $service = Services::SERVICE_TELEGRAM;
 
-    /**
-     * @param Throwable $e
-     * @param string $eventUrl
-     * @return void
-     * @throws UnknownServiceException
-     */
     public function sendMessage(Throwable $e, string $eventUrl): void
     {
         $notifableEntity = $this->getNotifableEntity();

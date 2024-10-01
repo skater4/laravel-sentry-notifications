@@ -16,10 +16,6 @@ class NotificationFactory
         $this->service = $service;
     }
 
-    /**
-     * @return Notification
-     * @throws UnknownServiceException
-     */
     public function create(): Notification
     {
         switch ($this->service) {
