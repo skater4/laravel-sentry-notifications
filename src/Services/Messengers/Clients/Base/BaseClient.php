@@ -3,7 +3,6 @@
 namespace Skater4\LaravelSentryNotifications\Services\Messengers\Clients\Base;
 
 use Illuminate\Notifications\Notification;
-use Skater4\LaravelSentryNotifications\Exceptions\UnknownServiceException;
 use Skater4\LaravelSentryNotifications\Notifications\Factories\NotificationEntityFactory;
 use Skater4\LaravelSentryNotifications\Notifications\Factories\NotificationFactory;
 use Skater4\LaravelSentryNotifications\Notifications\Interfaces\NotifableEntityInterface;
@@ -20,7 +19,7 @@ abstract class BaseClient
     protected function getMessageFormatter(): MessageFormatterInterface
     {
         if (!$this->messageFormatter) {
-            $this->messageFormatter = resolve(MessageFormatterFactory::class)->create();
+            $this->messageFormatter = app(MessageFormatterFactory::class)->create();
         }
 
         return $this->messageFormatter;

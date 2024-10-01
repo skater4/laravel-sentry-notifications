@@ -4,7 +4,6 @@ namespace Skater4\LaravelSentryNotifications\Services\Messengers\Clients\Telegra
 
 use Illuminate\Support\Facades\Notification;
 use Skater4\LaravelSentryNotifications\Enum\Services;
-use Skater4\LaravelSentryNotifications\Exceptions\UnknownServiceException;
 use Skater4\LaravelSentryNotifications\Services\Messengers\Interfaces\MessengerClientInterface;
 use Skater4\LaravelSentryNotifications\Services\Messengers\Clients\Base\BaseClient;
 use Throwable;

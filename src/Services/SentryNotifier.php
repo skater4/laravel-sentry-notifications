@@ -3,7 +3,7 @@
 namespace Skater4\LaravelSentryNotifications\Services;
 
 use Log;
-use Skater4\LaravelSentryNotifications\Services\Messengers\Interfaces\MessengerClientInterface;
+use Skater4\LaravelSentryNotifications\Services\Messengers\Factories\MessengerClientFactory;
 use Skater4\LaravelSentryNotifications\Exceptions\SentryNotifierException;
 use Skater4\LaravelSentryNotifications\Exceptions\UnknownServiceException;
 use Skater4\LaravelSentryNotifications\Services\Sentry\Interfaces\SentryServiceInterface;
@@ -18,19 +18,19 @@ class SentryNotifier
         UnknownServiceException::class
     ];
 
-    public function __construct(
-        MessengerClientInterface $messengerClient,
-        SentryServiceInterface   $sentryService
-    )
+    public function __construct(SentryServiceInterface $sentryService)
     {
-        $this->messengerClient  = $messengerClient;
-        $this->sentryService    = $sentryService;
+        $this->sentryService = $sentryService;
     }
 
     public function reportSentryNotification(Throwable $e): void
     {
         if (!$this->canReportSentry($e)) {
             return;
+        }
+
+        if (!$this->messengerClient) {
+            $this->messengerClient = app(MessengerClientFactory::class)->create();
         }
 
         try {
@@ -51,6 +51,6 @@ class SentryNotifier
 
     private function canReportSentry(Throwable $e): bool
     {
-        return !in_array(get_class($e), $this->dontReport);
+        return !in_array(get_class($e), $this->dontReport) && !empty(config('services.laravel-sentry-notifications.service'));
     }
 }
