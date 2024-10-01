@@ -54,7 +54,7 @@ SENTRY_NOTIFICATION_SERVICE=telegram
 Just add following code where exception is handled to be reported
 
 ```php
-resolve(SentryNotifier::class)->reportSentryNotification($exception);
+app(SentryNotifier::class)->reportSentryNotification($exception);
 ```
 
 For example report method in default exception handler
@@ -63,7 +63,7 @@ For example report method in default exception handler
 public function report(Throwable $exception)
 {
     if (app()->bound('sentry') && $this->shouldReport($exception)) {
-        resolve(SentryNotifier::class)->reportSentryNotification($exception);
+        app(SentryNotifier::class)->reportSentryNotification($exception);
     }
 
     parent::report($exception);
